@@ -3,6 +3,8 @@ import { uiSlice } from "./ui/uiSlice";
 import { calendarSlice } from "./calendar/calendarSlice";
 import { authSlice } from "./auth/authSlice";
 
+// obligatorio
+
 export const store = configureStore({
 
     reducer: {

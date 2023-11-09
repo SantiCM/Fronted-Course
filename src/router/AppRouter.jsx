@@ -8,14 +8,17 @@ import { useEffect } from "react";
 export const AppRouter = () => {
   //const authStatus = "not-authenticated" // authenticated, not-authenticated
 
+  // llamamos el status y el cheking del token del store del auth
   const { status, checkAuthToken } = useAuthStore();
 
+  // efecto de ese token 
   useEffect(() => {
 
     checkAuthToken();
   
   }, []);
 
+  // si el status es "cheking" retorna....
   if (status === "cheking") {
   
     return <h3>Cargandooo.....</h3>;

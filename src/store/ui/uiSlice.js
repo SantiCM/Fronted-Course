@@ -13,9 +13,10 @@ export const uiSlice = createSlice({
     },
     
     reducers: {
-    
+        // abrir el modal 
         onOpenDateModal: (state) => {
-    
+            
+            // abierto
             state.isDateModalOpen = true
 
             /*
@@ -31,8 +32,10 @@ export const uiSlice = createSlice({
     
         },
 
+        // cerrar el modal 
         onCloseDateModalOpen: (state) => {
-    
+            
+            // en falso
             state.isDateModalOpen = false
     
         },
@@ -44,4 +47,5 @@ export const uiSlice = createSlice({
   
 })
 
+// acciones
 export const {onOpenDateModal, onCloseDateModalOpen} = uiSlice.actions
