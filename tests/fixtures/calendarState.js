@@ -1,3 +1,6 @@
+// NOTA:
+// Los fixtures se utilizan para hacer diferentes escenarios
+// Y ahorrarnos tiempo jijijiji
 
 export const events = [
 

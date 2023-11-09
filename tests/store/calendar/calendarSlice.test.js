@@ -4,16 +4,19 @@ import { calendarWithActiveEventState, calendarWithEventsState, events, initialS
 describe('Pruebas en calendarSlice', () => { 
 
     test('debe de regresar el estado inicial', () => { 
-    
+        
+        // mandamos un estado del calendarSlice con el estado inicial
         const state = calendarSlice.getInitialState()
 
+        // esperamos que ese estado sea igaul al estaddo inicial por defecto
         expect(state).toEqual(initialState)
 
 
     })
 
+    // PRUEBAS DE EL COMPONENTE DE TERCEROS
     test('onSetActiveEvent debe de activar el evento', () => { 
-    
+        
         const state = calendarSlice.reducer(calendarWithEventsState, onSetActiveEvent(events[0]))
 
         expect(state.activeEvent).toEqual(events[0])

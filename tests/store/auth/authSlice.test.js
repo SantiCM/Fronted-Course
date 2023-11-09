@@ -5,12 +5,14 @@ import { testUserCredencials } from "../../fixtures/testUser"
 describe('Pruebas en authSlice', () => { 
 
     test('debe de regresar el estado inicial', () => { 
-    
+        
+        // esperamos que el auth regrese el estado inicial y sea igual al estadoInical
         expect(authSlice.getInitialState()).toEqual(initialState)
     
     
     })
 
+    // TEST BASICOS DE FORMULARIO
     test('debe de realizar el cheking', () => { 
         
         const state = authSlice.reducer(initialState, onCheking())
