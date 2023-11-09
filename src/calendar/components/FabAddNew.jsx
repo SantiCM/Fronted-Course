@@ -2,15 +2,19 @@ import { addHours } from "date-fns"
 import { useCalendarStore } from "../../hooks/useCalendarStore"
 import { useUiStore } from "../../hooks/useUiStore"
 
-
+// Crear nuevo evento 
 export const FabAddNew = () => {
 
+    // dessutruramos el open del store
     const { openDateModal } = useUiStore()
 
+    // y la nota activa
     const {setActiveEvent} = useCalendarStore()
 
+    // en el click 
     const handleClickNew = () => {
 
+        // la nota activa tiene que tener todo esto
         setActiveEvent({
             
             title: "",
@@ -33,6 +37,7 @@ export const FabAddNew = () => {
         
         })
 
+        // se abre el modal 
         openDateModal()
     
     }

@@ -81,13 +81,16 @@ export const CalendarModal = () => {
 
   });
 
-  // 
+  // hacemos la memorizacion 
   const tittleClaas = useMemo(() => {
 
+    // si no lo manda retornamos naa
     if (!formSubmitted) return " ";
 
+    // si es asi le decimos que si los valores son mayor a 0 del titulo pasa sino no es valido
     return formValues.title.length > 0 ? "" : "is-invalid";
 
+    // mandamos el formvalues del title y submited
   }, [formValues.title, formSubmitted]);
 
   useEffect(() => {
@@ -102,13 +105,16 @@ export const CalendarModal = () => {
     
   }, [activeEvent])
   
-
+  // el cambio del input le mandamos el target
   const onInputChange = ({ target }) => {
 
+    // el nuevo set del values
     setformValues({
       
+      // copia del valor
       ...formValues,
       
+      // el target.name de target.value
       [target.name]: target.value,
     
     });
@@ -131,18 +137,23 @@ export const CalendarModal = () => {
 
   };
 
+  // cerrar el modal 
   const oncloseModal = () => {
     
     closeDateMoral()
 
   };
 
+  // el submit es asyncrono recibiendo el evento 
   const onSubmit = async(event) => {
 
+    // prevencion del evento
     event.preventDefault();
 
+    // tiene que estar en true
     setFormSubmitted(true);
 
+    // diferencia de segundos en final y start
     const difference = differenceInSeconds(formValues.end, formValues.start);
 
     // si no es un numero muestra esto
@@ -157,12 +168,16 @@ export const CalendarModal = () => {
 
     }
 
+    // si los valores son mayores a 0 pasan 
     if (formValues.title.length <= 0) return;
 
+    // await de el store del auth que recibe los valores
     await startSavingEvent(formValues)
 
+    // se cierra 
     closeDateMoral()
 
+    // y ponemos el submit como falso
     setFormSubmitted(false)
 
   };
