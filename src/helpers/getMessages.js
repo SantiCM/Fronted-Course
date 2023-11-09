@@ -1,4 +1,4 @@
-// idioma
+// idioma a español con componentes de terceros
 export const getMessagesES = () => {
 
     return {

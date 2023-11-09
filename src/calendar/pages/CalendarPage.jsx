@@ -13,20 +13,28 @@ import { FabAddNew } from "../components/FabAddNew"
 import { FabDelete } from "../components/FabDelete"
 import { useAuthStore } from "../../hooks/useAuthStore"
 
+
+// el calendario
 export const CalendarPage = () => {
 
+  // mandamos llamar el user
   const {user} = useAuthStore()
 
+  // abrir el modal
   const { openDateModal } = useUiStore()
 
+  // los eventos, la nota activa y cargar los eventos 
   const { events, setActiveEvent, startLoandingEvents } = useCalendarStore()
 
+  // un usesate de el localStorage del lastView o del week
   const [lastView, setLastView] = useState(localStorage.getItem("lastView")  || "week")
   
+  // un evento 
   const eventStyleGetter = (event, start, end, isSelected) => {
-
+    // si el user.uid es igual al del evento.user._id (token) y el user.uis es igual al event.user.uid
     const isMyEvent = (user.uid === event.user._id || (user.uid === event.user.uid) )
 
+    // mandamos este estilo
     const style = {
       
       backgroundColor: isMyEvent ? "#347CF7" : "#465660",
@@ -47,26 +55,31 @@ export const CalendarPage = () => {
   
   }
 
+  // hacer dobel click para abrir el modal en el evento seleccionado
   const hacerDobleClick = (event) => {
 
     openDateModal()
   
   }
 
+  // seleccioanr un evento
   const seleccionarE = (event) => {
 
     setActiveEvent(event)
 
   }
 
+  // cambiar la vista 
   const vistaCambia = (event) => {
 
+    // localStrogae del setItem del lastView del event
     localStorage.setItem("lastView", event)
 
     setLastView(event)
   
   }
 
+  // useEffects de cargar los eventos
   useEffect(() => {
     
     startLoandingEvents()
