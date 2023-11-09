@@ -10,8 +10,13 @@ import { useUiStore } from "../../hooks/useUiStore";
 import { useCalendarStore } from "../../hooks/useCalendarStore";
 import { getEnvVariables } from "../../helpers/getEnvVariables";
 
+
+// Hacemos el calendarModal de terceros componentes
+
+// hacemos que el idioma cambie a español
 registerLocale("es", es);
 
+// estilos
 const customStyles = {
   
   content: {
@@ -43,30 +48,40 @@ if(getEnvVariables().VITE_MODE !== "test") {
 
 */ 
 
+
+// si las variables son iguales al mode del test pasa
 if(getEnvVariables().VITE_MODE) 
 
+// Modal del #root (evitar el error)
 Modal.setAppElement("#root");
 
 export const CalendarModal = () => {
 
+  // llamos el isDateModalOpen, closeDateMoral que viene de useUiStore
   const { isDateModalOpen, closeDateMoral } = useUiStore();
 
+  // lamamos el activeEvent, startSavingEvent que viene de useCalendarStore
   const {activeEvent, startSavingEvent} = useCalendarStore()
 
+  //hacemos un useState del form 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
+  // otro useForm de los valores  que tiene el titulo, las notas, el inicio y el fina
   const [formValues, setformValues] = useState({
 
     title: "Santiago",
 
     notes: "Melo",
 
+    // inicia con una nueva hora
     start: new Date(),
 
+    // acaba despues de 2 horas por defecto
     end: addHours(new Date(), 2),
 
   });
 
+  // 
   const tittleClaas = useMemo(() => {
 
     if (!formSubmitted) return " ";
