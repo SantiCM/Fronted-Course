@@ -3,7 +3,6 @@ import calendarApi from "../api/calendarApi"
 import { clearErrorMessage, onCheking, onLogin, onLogout } from "../store/auth/authSlice"
 import { onLogoutCalendar } from "../store/calendar/calendarSlice"
 
-
 export const useAuthStore = () => {
 
     const { status, user, errorMessage } = useSelector(state => state.auth)

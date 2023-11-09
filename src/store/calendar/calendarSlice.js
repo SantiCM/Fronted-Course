@@ -3,7 +3,7 @@ import { addHours } from "date-fns"
 
 /*const tempEvent = {
 
-    _id: new Date().getTime(),
+    id: new Date().getTime(),
 
     title: "Cumpleaños",
   
@@ -82,6 +82,7 @@ export const calendarSlice = createSlice({
             if(state.activeEvent) {
                 
                 state.events = state.events.filter(event => event.id !== state.activeEvent.id)
+                
                 state.activeEvent = null
             
             }
